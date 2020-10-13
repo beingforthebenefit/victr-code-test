@@ -64,7 +64,7 @@ class Framework {
     // Framework::load :: void -> void
     // Custom load method.
     // Enforces naming convention for controllers `xxxController.class.php`
-    // and for models `xxxModel.class.php`
+    //   and for models `xxxModel.class.php`
     private static function load($classname) {
         if (substr($classname, -10) == 'Controller') {
             require_once CURR_CONTROLLER_PATH . "{$classname}.class.php";
@@ -73,7 +73,11 @@ class Framework {
         }
     }
 
+    // Framework::dispatch :: void -> void
     private static function dispatch() {
-
+        $controller_name = CONTROLLER . 'Controller';
+        $action_name = ACTION . 'Action';
+        $controller = new $controller_name;
+        $controller->$action_name();
     }
 }
