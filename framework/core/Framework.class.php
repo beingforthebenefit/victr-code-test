@@ -56,8 +56,21 @@ class Framework {
 
     }
 
+    // Framework::autoload :: void -> void
     private static function autoload() {
+        spl_autoload_register([__CLASS__, 'load']);
+    }
 
+    // Framework::load :: void -> void
+    // Custom load method.
+    // Enforces naming convention for controllers `xxxController.class.php`
+    // and for models `xxxModel.class.php`
+    private static function load($classname) {
+        if (substr($classname, -10) == 'Controller') {
+            require_once CURR_CONTROLLER_PATH . "{$classname}.class.php";
+        } else if (substr($classname, -5) == "Model") {
+            require_once MODEL_PATH . "{$classname}.class.php";
+        }
     }
 
     private static function dispatch() {
