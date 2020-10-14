@@ -10,4 +10,23 @@ class RepositoryModel extends Model {
 
         return $repositories;
     }
+
+    // updateTable
+    public function updateTable() {
+        $this->truncate();
+
+        $repositories = IndexController::curl('https://api.github.com/search/repositories?q=language:php&sort=stars&order=desc')['items'];
+
+        foreach ($repositories as $repository) {
+            $this->insert([
+                'repositoryId' => $repository['id'],
+                'name' => $repository['name'],
+                'url' => $repository['url'],
+                'createdDate' => $repository['created_at'],
+                'lastUpdated' => $repository['updated_at'],
+                'description' => $repository['description'],
+                'stars' => $repository['stargazers_count'],
+            ]);
+        }
+    }
 }
