@@ -3,14 +3,27 @@
 
 class IndexController extends Controller {
 
+    // build :: void -> void
+    public function build($path, $model) {
+        ob_start();
+        $this->headerAction();
+        $this->menuAction();
+        include $path;
+        $this->footerAction();
+        return ob_get_clean();
+    }
+
     // indexAction :: void -> void
     public function indexAction() {
         $repositoryModel = new RepositoryModel('repositories');
-        $repositories = $repositoryModel->repositories();
 
-        include CURR_VIEW_PATH . 'index.php';
-
-        $repositoryModel->updateTable();
+        if (array_key_exists('id', $_REQUEST)) {
+            $repository = $repositoryModel->fromId($_REQUEST['id']);
+            echo $this->build(CURR_VIEW_PATH . 'single.php', $repository);
+        } else {
+            $repositories = $repositoryModel->repositories();
+            echo $this->build(CURR_VIEW_PATH . 'main.php', $repositories);
+        }
     }
 
     // menuAction :: void -> void
@@ -18,8 +31,8 @@ class IndexController extends Controller {
         include CURR_VIEW_PATH . 'menu.php';
     }
 
-    // topAction :: void -> void
-    public function topAction() {
+    // headerAction :: void -> void
+    public function headerAction() {
         include CURR_VIEW_PATH . 'top.php';
     }
 
