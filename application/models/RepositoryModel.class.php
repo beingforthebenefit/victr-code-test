@@ -1,6 +1,8 @@
 <?php
 // application/models/RepositoryModel.class.php
 
+include 'application/utils/Curl.class.php';
+
 class RepositoryModel extends Model {
     
     // repositories :: void -> [[string -> a]]|false
@@ -15,7 +17,7 @@ class RepositoryModel extends Model {
     public function updateTable() {
         $this->truncate();
 
-        $repositories = IndexController::curl('https://api.github.com/search/repositories?q=language:php&sort=stars&order=desc')['items'];
+        $repositories = Curl::url('https://api.github.com/search/repositories?q=language:php&sort=stars&order=desc')['items'];
 
         foreach ($repositories as $repository) {
             $this->insert([

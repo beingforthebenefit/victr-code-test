@@ -26,6 +26,14 @@ class IndexController extends Controller {
         }
     }
 
+    public function updateAction() {
+        $repositoryModel = new RepositoryModel('repositories');
+
+        $repositoryModel->updateTable();
+
+        $this->redirect('/', 'Redirecting...');
+    }
+
     // menuAction :: void -> void
     public function menuAction() {
         include CURR_VIEW_PATH . 'menu.php';
@@ -39,22 +47,5 @@ class IndexController extends Controller {
     // footerAction :: void -> void
     public function footerAction() {
         include CURR_VIEW_PATH . 'footer.php';
-    }
-
-    // curl :: string -> [string => string]
-    public static function curl($url) {
-        $handle = curl_init();
-
-        curl_setopt_array($handle, [
-            CURLOPT_URL => $url,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_USERAGENT => $_SERVER['HTTP_USER_AGENT'],
-        ]);
-
-        $data = curl_exec($handle);
-
-        curl_close($handle);
-
-        return json_decode($data, true);
     }
 }
