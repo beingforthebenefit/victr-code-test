@@ -52,7 +52,7 @@ class Model {
         foreach ($list as $key => $value) {
             if (in_array($key, $this->fields)) {
                 $field_list .= "`" . $key . "`" . ",";
-                $value_list .= "'" . $value . "'" . ",";
+                $value_list .= "'" . addslashes($value) . "'" . ",";
             }
         }
 
@@ -74,7 +74,7 @@ class Model {
                     if ($key == $this->fields['pk']) {
                     $where = "`{$key}` = {$value}";
                 } else {
-                    $uplist .= "`{$key}` = '$value',";
+                    $uplist .= "`{$key}` = '" . addslashes($value) . "',";
                 }
             }
         }
@@ -114,6 +114,7 @@ class Model {
     }
 
     // pageRows :: (int, int, string?) -> [[string -> a]]|false
+    // To build paginated views
     public function pageRows($offset, $limit, $where = '') {
         if (empty($where)) {
             $sql = "SELECT * FROM {$this->table} LIMIT {$offset}, {$limit}";
@@ -122,5 +123,11 @@ class Model {
         }
 
         return $this->db->rows($sql);
+    }
+
+    // truncate :: void -> int|false
+    public function truncate() {
+        $sql = "TRUNCATE TABLE {$this->table}";
+        return $this->db->query($sql);
     }
 }
