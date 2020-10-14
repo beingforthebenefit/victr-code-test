@@ -5,7 +5,7 @@ class RepositoryModel extends Model {
     
     // repositories :: void -> [[string -> a]]|false
     public function repositories() {
-        $sql = "SELECT * FROM {$this->table}";
+        $sql = "SELECT * FROM {$this->table} ORDER BY `stars` DESC";
         $repositories = $this->db->rows($sql);
 
         return $repositories;
