@@ -21,7 +21,7 @@ class Model {
         }
 
         $this->db = new Mysql($dbconfig);
-        $this->table = $GLOBALS['config']['prefix'] . $table;
+        $this->table = $table;
         $this->fields();
     }
 
