@@ -17,11 +17,11 @@ class Mysql {
         $password = isset($config['password']) ? $config['password'] : '';
         $dbname = isset($config['dbname']) ? $config['dbname'] : '';
         $port = isset($config['port']) ? $config['port'] : '3306';
-        $charset == isset($config['charset']) ? $config['charset'] : 'utf8';
+        $charset = isset($config['charset']) ? $config['charset'] : 'utf8';
 
         $this->conn = mysqli_connect("{$host}:{$port}", $user, $password) or die('Database connection error.');
 
-        mysqli_select_db($dbname) or die('Database selection error.');
+        mysqli_select_db($this->conn, $dbname) or die('Database selection error.');
 
         $this->setChar($charset);
     }
@@ -41,7 +41,7 @@ class Mysql {
 
         file_put_contents("log.txt", $str, FILE_APPEND);
 
-        $result = mysqli_query($this->sql, $this->conn);
+        $result = mysqli_query($this->conn, $this->sql);
 
         if (!$result) {
             die($this->errno() . ':' . $this->error() . '<br />Error SQL statement is ' . $this->sql . '<br />');
