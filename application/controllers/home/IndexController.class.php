@@ -33,7 +33,7 @@ class IndexController extends Controller {
 
     // headerAction :: void -> void
     public function headerAction() {
-        include CURR_VIEW_PATH . 'top.php';
+        include CURR_VIEW_PATH . 'header.php';
     }
 
     // footerAction :: void -> void
