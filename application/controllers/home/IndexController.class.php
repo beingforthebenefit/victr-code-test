@@ -13,9 +13,7 @@ class IndexController extends Controller {
 
         include CURR_VIEW_PATH . 'index.php';
 
-        $data = self::curl('https://api.github.com/search/repositories?q=language:php&sort=stars&order=desc');
-
-        var_dump($data);
+        $repositoryModel->updateTable();
     }
 
     public function menuAction() {
