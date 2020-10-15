@@ -21,7 +21,7 @@ PHP 7.3
 
 ## Configuration
 
-Database credentials should be placed in `application/config/config.php` using `application/config/config.php.example` as a template.
+Database credentials should be placed in `application/config/config.php` using `application/config/config.php.example` as a template. The database schema can be found in `framework/database/schema.sql`.
 
 ## License
 
