@@ -6,11 +6,13 @@
     <a class="base__link" href="/"><- back</a>
 </div>
 
-<table class="body__table">
-    <?php foreach ($model as $key => $value) { ?>
-        <tr class="body-table-body__row">
-            <td class="body-table-body__cell"><?= $key ?></td>
-            <td class="body-table-body__cell"><?= $value ?></td>
-        </tr>
-    <?php } ?>
-</table>
+<div class="body-table__wrap">
+    <table class="body__table">
+        <?php foreach ($model as $key => $value) { ?>
+            <tr class="body-table-body__row">
+                <td class="body-table-body__cell"><?= $key ?></td>
+                <td class="body-table-body__cell"><?= $value ?></td>
+            </tr>
+        <?php } ?>
+    </table>
+</div>
