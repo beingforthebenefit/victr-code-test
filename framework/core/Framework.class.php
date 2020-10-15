@@ -17,7 +17,7 @@ class Framework {
 
         // Define path constants
         define("DS", DIRECTORY_SEPARATOR);
-        define("ROOT", getcwd() . DS);
+        define("ROOT", getcwd() . DS . '..' . DS);
         define("APP_PATH", ROOT . 'application' . DS);
         define("FRAMEWORK_PATH", ROOT . 'framework' . DS);
         define("PUBLIC_PATH", ROOT . 'public' . DS);
@@ -26,6 +26,7 @@ class Framework {
         define("CONTROLLER_PATH", APP_PATH . 'controllers' . DS);
         define("MODEL_PATH", APP_PATH . 'models' . DS);
         define("VIEW_PATH", APP_PATH . 'views' . DS);
+        define("UTIL_PATH", APP_PATH . 'utils' . DS);
 
         define("CORE_PATH", FRAMEWORK_PATH . 'core' . DS);
         define("DB_PATH", FRAMEWORK_PATH . 'database'. DS);

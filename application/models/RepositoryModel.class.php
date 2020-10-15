@@ -1,7 +1,7 @@
 <?php
 // application/models/RepositoryModel.class.php
 
-include 'application/utils/Curl.class.php';
+include UTIL_PATH . 'Curl.class.php';
 
 class RepositoryModel extends Model {
     
