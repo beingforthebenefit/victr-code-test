@@ -11,6 +11,27 @@
     width: 90%;
 }
 
+.body-table__wrap {
+    margin: auto;
+}
+
+.nav-link__wrap {
+    text-align: right;
+    width: 90%;
+}
+
+.body-header__wrap {
+    text-align: center;
+}
+
+.body-table__wrap {
+    width: 80%;
+}
+
+.body__table {
+    width: 100%;
+}
+
 .body-table-head__cell,
 .body-table-body__cell {
     text-align: left;
@@ -19,4 +40,8 @@
 
 .body-table-body__row:nth-child(even) {
     background-color: #f2f2f2;
+}
+
+.footer {
+    text-align: center;
 }
