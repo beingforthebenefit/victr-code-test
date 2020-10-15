@@ -29,5 +29,5 @@ This work is licensed under the Creative Commons Attribution 0.0 International L
 
 ## Author
 
-Gerald Todd II
+Gerald Todd II\
 https://gtodd.dev
