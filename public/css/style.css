@@ -1,13 +1,3 @@
-body {
-
-}
-
-.body-header__wrap {
-}
-
-.body__header {
-}
-
 .base__link {
     text-decoration: none;
 }
@@ -16,27 +6,15 @@ body {
     text-decoration: underline;
 }
 
-.nav-link__wrap {
-}
-
 .body__table {
     border-collapse: collapse;
     width: 90%;
-}
-
-.body-table__head {
-}
-
-.body-table-head__row {
 }
 
 .body-table-head__cell,
 .body-table-body__cell {
     text-align: left;
     padding: 8px;
-}
-
-.body-table__body {
 }
 
 .body-table-body__row:nth-child(even) {
