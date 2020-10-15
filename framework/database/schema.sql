@@ -6,5 +6,6 @@ CREATE TABLE `repositories` (
   `createdDate` datetime DEFAULT NULL,
   `lastUpdated` datetime DEFAULT NULL,
   `description` text,
-  `stars` int(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `stars` int(1) DEFAULT NULL,
+  PRIMARY KEY (`repositoryId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
